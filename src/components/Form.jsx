@@ -22,7 +22,7 @@ const Form = () => {
   const { category, handleChangeCategory } = useNews();
   return (
     <form>
-      <FormControl>
+      <FormControl sx={{ width: "330px" }}>
         <InputLabel>Categories</InputLabel>
         <Select
           label="Categories"
@@ -35,18 +35,6 @@ const Form = () => {
             </MenuItem>
           ))}
         </Select>
-        <Box mt={2} sx={{ width: "330px" }}>
-          <Button
-            fullWidth
-            variant="contained"
-            // sx={{
-            //   minWidth: "100%",
-            //   //margin: "0 auto"
-            // }}
-          >
-            Search news
-          </Button>
-        </Box>
       </FormControl>
     </form>
   );

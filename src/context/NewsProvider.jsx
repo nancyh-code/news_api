@@ -12,7 +12,11 @@ const NewsProvider = ({ children }) => {
       const url = `https://newsapi.org/v2/top-headlines?country=ca&category=${category}&apiKey=${
         import.meta.env.VITE_API_KEY
       }`;
+      // const url = `https://newsapi.org/v2/top-headlines?sources=bbc-news&category=${category}&apiKey=${
+      //   import.meta.env.VITE_API_KEY
+      // }`;
       const { data } = await axios(url);
+
       setNews(data.articles);
     };
     consultAPI();
@@ -26,7 +30,7 @@ const NewsProvider = ({ children }) => {
       value={{
         category,
         handleChangeCategory,
-        // news,
+        news,
         // setNews
       }}
     >

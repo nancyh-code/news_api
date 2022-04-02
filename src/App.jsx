@@ -2,6 +2,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { NewsProvider } from "./context/NewsProvider";
 import Form from "./components/Form";
+import NewsListing from "./components/NewsListing";
 
 const theme = createTheme({
   palette: {
@@ -10,6 +11,9 @@ const theme = createTheme({
       main: "#006778",
     },
     secondary: {
+      main: "#0093AB",
+    },
+    error: {
       main: "#FFD124",
     },
   },
@@ -19,10 +23,11 @@ function App() {
   return (
     <NewsProvider>
       <ThemeProvider theme={theme}>
-        <Container maxWidth="sm">
+        <Container>
           <header>
             <Typography
               align="center"
+              justifyContent="center"
               my={5}
               component="h1"
               variant="h2"
@@ -36,12 +41,19 @@ function App() {
             container
             // direction="row"
             justifyContent="center"
-            mx={-2}
           >
-            <Grid item xs={12} md={6} sx={{ margin: "0 auto" }}>
+            <Grid
+              item
+              xs={12}
+              lg={6}
+              md={4}
+              align="center"
+              // sx={{ margin: "0 auto" }}
+            >
               <Form />
             </Grid>
           </Grid>
+          <NewsListing />
         </Container>
       </ThemeProvider>
     </NewsProvider>
