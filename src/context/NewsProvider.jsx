@@ -19,20 +19,43 @@ const NewsProvider = ({ children }) => {
       setNews(data.articles);
 
       setTotalNews(data.totalResults);
+
+      setPage(1);
     };
     consultAPI();
   }, [category]);
 
+  useEffect(() => {
+    const consultAPI = async () => {
+      const url = `https://newsapi.org/v2/top-headlines?country=ca&page=${page}&category=${category}&apiKey=${
+        import.meta.env.VITE_API_KEY
+      }`;
+      const { data } = await axios(url);
+
+      setNews(data.articles);
+
+      setTotalNews(data.totalResults);
+    };
+    consultAPI();
+  }, [page]);
+
   const handleChangeCategory = (e) => {
     setCategory(e.target.value);
   };
+
+  const handleChangePage = (e, valor) => {
+    setPage(valor);
+  };
+
   return (
     <NewsContext.Provider
       value={{
         category,
         handleChangeCategory,
         news,
-        // setNews
+        totalNews,
+        handleChangePage,
+        page,
       }}
     >
       {children}

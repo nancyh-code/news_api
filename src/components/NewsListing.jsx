@@ -3,8 +3,9 @@ import useNews from "../hooks/useNews";
 import News from "./News";
 
 const NewsListing = () => {
-  const { news } = useNews();
-  console.log(news);
+  const { news, totalNews, handleChangePage, page } = useNews();
+  console.log(totalNews);
+  const totalPages = Math.ceil(totalNews / 20);
   return (
     <>
       <Typography
@@ -22,7 +23,12 @@ const NewsListing = () => {
         ))}
       </Grid>
       <Stack spacing={2} mt={5} justifyContent="center" alignItems="center">
-        <Pagination count={3} color="primary" />
+        <Pagination
+          count={totalPages}
+          color="primary"
+          onChange={handleChangePage}
+          page={page}
+        />
       </Stack>
     </>
   );
